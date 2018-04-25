@@ -5,14 +5,19 @@ const Model = require('../models')
 const db = require('../models');
 const Customer = db.Customer;
 
+// router.get('/', (req, res) => {
+//   Customer.findAll()
+//   .then((customers) => {
+//     // res.send(customers)
+//     res.render('index.ejs')
+//   }).catch((err) => {
+//     res.send(err)
+//   });
+// });
+
 router.get('/', (req, res) => {
-  Customer.findAll()
-  .then((customers) => {
-    res.send(customers)
-  }).catch((err) => {
-    res.send(err)
-  });
-});
+  res.render('index')
+})
 
 router.get('/add', (req, res) => {
   res.send('PAGE FOR ADD CUSTOMER')

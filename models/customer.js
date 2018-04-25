@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
             })
         }
       }
+    },
+    username: DataTypes.STRING,
+    password: DataTypes.STRING,
+    passwordSalt: {
+      type: DataTypes.INTEGER,
+      defaultValue: 5
     }
   }, {});
   Customer.associate = function (models) {

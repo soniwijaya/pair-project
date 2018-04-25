@@ -2,8 +2,13 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-app.use(bodyParser.urlencoded({ extended:false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs')
+
+const session = require('express-session');
+app.use(session({
+  secret: '#@AS*&&#JJSNFSN1231SSDASD'
+}))
 
 // index
 const staticPage = require('./routes/index')
