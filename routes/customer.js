@@ -7,29 +7,37 @@ const db = require('../models');
 const Customer = db.Customer;
 
 router.get('/', (req, res) => {
-  res.render('index')
+  if(req.session.currentUser) {
+    res.send('hello')
+  }else {
+    res.render('index')
+  }
 })
 
 router.post('/do_login',
   (req, res, next) => {
     let username = req.body.username
     Customer.find({ where: { username: username } })
-    .then(user => {
-      let passwordCheck = bcrypt.compare(req.body.password, user.password);
-      if(passwordCheck) {
-        next()
-      }else {
-        res.send('Wrong Password')
-      }
-    }).catch(err => {
-      res.send(err)
-    })
+      .then(user => {
+        let passwordCheck = bcrypt.compareSync(req.body.password, user.password);
+        if (user && passwordCheck) {
+          req.session.currentUser = user
+          next()
+        } else {
+          res.send('Username or Password Wrong')
+        }
+      }).catch(err => {
+        res.send(err)
+      })
   },
-
   (req, res) => {
-
+    res.send('hello' + JSON.stringify(req.session.currentUser))
   })
 
+router.get('/do_logout', (req,res) => {
+  req.session.currentUser = null;
+  res.redirect('/')
+})
 router.get('/add', (req, res) => {
   res.send('PAGE FOR ADD CUSTOMER')
 });
