@@ -1,0 +1,27 @@
+<%- include header %>
+  <body>
+  <h1>Register</h1>
+  <form action="/customer/register" method="post">
+    <label for="name">Name: </label>
+    <br>
+    <input type="text" name="name">
+    <br>
+    <label for="email">Email: </label>
+    <br>
+    <input type="text" name="email">
+    <br>
+    <label for="username">Username: </label>
+    <br>
+    <input type="text" name="username">
+    <br>
+    <label for="password">Password: </label>
+    <br>
+    <input type="password" name="password">
+    <br>
+    <button type="submit">Register</button>
+  </form>
+
+  <a href="/customer">Back to login</a>
+
+  </body>
+</html>

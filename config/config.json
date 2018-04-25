@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
-    "database": "db_library",
+    "password": "123456",
+    "database": "db_cart",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

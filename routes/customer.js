@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express()
+const bcrypt = require('bcrypt')
 const Model = require('../models')
 
 const db = require('../models');
@@ -91,5 +92,26 @@ router.get('/:customerId/transactions/:transactionId', (req, res) => {
       res.send(err)
     })
 });
+
+
+router.get('/register',function(req,res){
+  res.render('register')
+})
+
+router.post('/register',function(req,res){
+  let salt = bcrypt.genSaltSync(5)
+  let encryptPass = bcrypt.hashSync(req.body.password,salt)
+  Model.Customer.create(
+    {
+      name: req.body.name,
+      email: req.body.email,
+      username: req.body.username,
+      password: encryptPass
+    }
+  )
+  .then(function(){
+    res.redirect('/')
+  })
+})
 
 module.exports = router
