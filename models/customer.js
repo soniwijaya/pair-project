@@ -23,10 +23,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    username : {
+    username: {
       type: DataTypes.STRING
     },
-    password : {
+    password: {
       type: DataTypes.STRING
     },
     passwordSalt: {
@@ -36,6 +36,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Customer.associate = function (models) {
     // associations can be defined here
+    Customer.belongsToMany(models.Transaction, {
+      through: models.Cart
+    })
   };
   return Customer;
 };
