@@ -1,28 +1,35 @@
 <%- include header %>
 
+<header style="text-align:center; margin-top: 30px; margin-bottom:30px">
     <h1>Hi User <%= session.name %></h1>
     <h2>Your Cart</h2>
-    <a href="/book"><button>Back</button></a> 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let i=0;i<session.cart.length;i++) {%>
-            <tr>
-                <td><%= i+1 %></td>
-                <td><%= session.cart[i].title %></td>
-                <td><%= session.cart[i].quatity %></td>
-            </tr>
-            <% } %>
-        </tbody>
-    </table>
-    <form action="/cart" method="post">
-        <input type="submit" value="Checkout" />
-    </form>
+    <a href="/book"><button class="btn btn-warning">Back</button></a> 
+</header>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0;i<session.cart.length;i++) {%>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= session.cart[i].title %></td>
+                    <td><%= session.cart[i].quatity %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <form action="/cart" method="post">
+            <input type="submit" class="btn btn-primary" value="Checkout" />
+        </form>
+    </div>
+</div>
 </body>
 </html>

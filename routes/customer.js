@@ -8,7 +8,7 @@ const Customer = db.Customer;
 
 router.get('/', (req, res) => {
   if(req.session.currentUser) {
-    res.send('hello')
+    res.render('alreadyLogin')
   }else {
     res.render('index')
   }
