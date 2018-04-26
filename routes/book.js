@@ -6,9 +6,13 @@ router.get('/',function(req,res){
     Model.Book.findAll()
     .then(function(listBook){
         if(req.session.currentUser) {
-            res.render('listBook',{listBook})
+            let quantity = 0
+            for(let i=0;i<req.session.currentUser.cart.length;i++){
+                quantity += req.session.currentUser.cart[i].quatity
+            }
+            res.render('listBook',{listBook,quantity:JSON.stringify(quantity)})
         }else {
-            res.redirect('/')
+            res.redirect('/')          
         }
     })
 })

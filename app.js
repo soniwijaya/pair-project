@@ -20,4 +20,7 @@ app.use('/customer', customer)
 const book = require('./routes/book')
 app.use('/book', book)
 
+const cart = require('./routes/cart')
+app.use('/cart', cart)
+
 app.listen(3000)

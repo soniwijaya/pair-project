@@ -19,9 +19,14 @@ router.post('/do_login',
     let username = req.body.username
     Customer.find({ where: { username: username } })
       .then(user => {
+        let customer = {
+          id: user.id,
+          name: user.name,
+          cart: []
+        }
         let passwordCheck = bcrypt.compareSync(req.body.password, user.password);
         if (user && passwordCheck) {
-          req.session.currentUser = user
+          req.session.currentUser = customer
           next()
         } else {
           res.send('Username or Password Wrong')

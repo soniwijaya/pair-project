@@ -1,7 +1,10 @@
 <%- include header %>
 
     <h1>List Book</h1>
-    <a href="/customer/do_logout"><h3>Logout</h3></a>
+    <h2>Lama Peminjaman 2 hari</h2>
+    <a href="/customer/do_logout"><button>Logout</button></a>
+    <a href="/cart"><button>Cart</button></a> 
+    <p>Jumlah Cart <%= quantity %></p>
     <table>
         <thead>
             <tr>
@@ -19,7 +22,7 @@
                 <td><%= bookList.title %></td>
                 <td><%= bookList.description %></td>
                 <td><%= bookList.stock %></td>
-                <td><a href="">Add Book to Cart</a></td>
+                <td><a href="/cart/add/<%= bookList.id %>">Add Book to Cart</a></td>
             </tr>
             <% }) %>
         </tbody>
