@@ -1,0 +1,29 @@
+<%- include header %>
+
+    <h1>List Peminjaman <%= user.name %></h1>
+    <a href="/customer/do_logout"><h3>Logout</h3></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lease Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% transactions.forEach(function(transaction) { %>
+            <tr>
+                <td><%= transaction.id %></td>
+                <td><%= transaction.bookDate %></td>
+                <td><%= transaction.returnDate %></td>
+                <td><%= helper.checkDate(transaction.returnDate) %></td>
+                <td><a href="/transaction/<%= transaction.id %>/detail">View Detail</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+</body>
+</html>
