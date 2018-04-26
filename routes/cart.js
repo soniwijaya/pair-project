@@ -8,8 +8,32 @@ router.get('/',function(req,res){
     res.render('cart',{session})
 })
 
+router.post('/',function(req,res){
+    let session = req.session.currentUser
+
+    Model.Transaction.create({
+        bookDate : session.cart[0].bookDate,
+        returnDate : session.cart[0].returnDate
+    })
+    .then(function(result){
+        let listCart = []
+        for(let i=0;i<session.cart.length;i++){
+            listCart.push({ CustomerId: session.cart[i].CustomerId, quantity: session.cart[i].quatity, duration: 2, BookId: session.cart[i].BookId,TransactionId:result.id},)
+        }
+
+        Model.Cart.bulkCreate(listCart)
+        .then(function(){
+            res.redirect('/book')
+        })
+    })
+    
+})
+
 router.get('/add/:bookId',function(req,res){
     let session = req.session.currentUser
+    let someDate = new Date();
+    let numberOfDaysToAdd = 2;
+    someDate.setDate(someDate.getDate() + numberOfDaysToAdd)
 
     Model.Book.findById(req.params.bookId)
     .then(function(book){
@@ -17,6 +41,8 @@ router.get('/add/:bookId',function(req,res){
             let temporary = {}
             temporary["title"] = book.title
             temporary["stock"] = book.stock-1
+            temporary["bookDate"] = new Date()
+            temporary["returnDate"] = someDate
             temporary["duration"] = 2
             temporary["quatity"] = 1
             temporary["BookId"] = Number(req.params.bookId)
@@ -37,6 +63,8 @@ router.get('/add/:bookId',function(req,res){
                 let temporary = {}
                 temporary["title"] = book.title
                 temporary["stock"] = book.stock-1
+                temporary["bookDate"] = new Date()
+                temporary["returnDate"] = someDate
                 temporary["quatity"] = 1
                 temporary["duration"] = 2
                 temporary["BookId"] = Number(req.params.bookId)

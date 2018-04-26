@@ -1,5 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
+  let Transaction = require('./transaction')
   var Cart = sequelize.define('Cart', {
     CustomerId: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
