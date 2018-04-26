@@ -1,15 +1,21 @@
 <%- include header %>
   <body>
-  <h1>LOGIN</h1>
-  <form action="/customer/do_login" method="post">
-    <label for="username">Username: </label>
-    <input type="text" name="username">
-    <label for="password">Password: </label>
-    <input type="password" name="password">
-    <button type="submit">Login</button>
-  </form>
+  <header style="text-align:center; margin-top: 30px; margin-bottom:30px">
+      <h1>LOGIN</h1>
+  </header>
+  <div class="container">
+    <div class="row">
+      <form class="form-group" action="/customer/do_login" method="post" style="text-align:center;margin:auto">
+        <label for="username">Username: </label>
+        <input type="text" name="username" class="form-control">
+        <label for="password">Password: </label>
+        <input type="password" name="password" class="form-control">
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="/customer/register"><button class="btn btn-primary" type="button">Register</button></a>
+      </form>
 
-  <a href="/customer/register">Register</a>
-
+    </div>
+  </div>
   </body>
 </html>
