@@ -29,4 +29,7 @@ app.use('/book', book)
 const transactionRoute = require('./routes/transaction')
 app.use('/transaction', transactionRoute)
 
-app.listen(8080)
+const cart = require('./routes/cart')
+app.use('/cart', cart)
+
+app.listen(3000)
