@@ -5,7 +5,11 @@ const Model = require('../models')
 router.get('/',function(req,res){
     Model.Book.findAll()
     .then(function(listBook){
-        res.render('listBook',{listBook})
+        if(req.session.currentUser) {
+            res.render('listBook',{listBook})
+        }else {
+            res.redirect('/')
+        }
     })
 })
 

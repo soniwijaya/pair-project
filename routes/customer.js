@@ -31,7 +31,7 @@ router.post('/do_login',
       })
   },
   (req, res) => {
-    res.send('hello' + JSON.stringify(req.session.currentUser))
+    res.redirect('/book')
   })
 
 router.get('/do_logout', (req,res) => {
