@@ -3,7 +3,11 @@ const router = express()
 const Model = require('../models')
 
 router.get('/',function(req,res){
-    Model.Book.findAll()
+    Model.Book.findAll({
+        order: [
+            ['id','ASC']
+        ]
+    })
     .then(function(listBook){
         if(req.session.currentUser) {
             let quantity = 0

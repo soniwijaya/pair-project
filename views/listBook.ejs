@@ -1,32 +1,25 @@
 <%- include header %>
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+          </ul>
+        </div>
+      </nav>
+    <header>
+        <h1>List Book</h1>
+        <h2>Lama Peminjaman 2 hari</h2>
+        <a href="/customer/do_logout"><button>Logout</button></a>
+        <a href="/cart"><button>Cart</button></a>
+    </header>
 
-    <h1>List Book</h1>
-    <h2>Lama Peminjaman 2 hari</h2>
-    <a href="/customer/do_logout">
-        <button>Logout</button>
-    </a>
-    <a href="/cart">
-        <button>Cart</button>
-    </a>
-    <p>Jumlah Cart
-        <%= quantity %>
-    </p>
-    <form action="/restaurants/search" class="form-inline" method="POST">
-        <div class="form-group">
-            <label for="search">Search by: </label>
-            <select name="column_name" class="form-control">
-                <option>title</option>
-                <option>menu type</option>
-                <option>rating</option>
-                <option>price</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="keyword">Keyword:</label>
-            <input type="text" name="keyword" class="form-control" ˜>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <p>Jumlah Cart <%= quantity %></p>
     <table>
         <thead>
             <tr>
