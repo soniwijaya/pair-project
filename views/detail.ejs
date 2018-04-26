@@ -1,25 +1,32 @@
 <%- include header %>
 
-    <h1>List Peminjaman</h1>
-    <a href="/customer/do_logout"><h3>Logout</h3></a>
-    <table>
-        <thead>
-            <tr>
-                <th>Book Title</th>
-                <th>Book Description</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% carts.forEach(function(cart) { %>
-            <tr>
-                <td><%= cart.Book.title %></td>
-                <td><%= cart.Book.description %></td>
-                <td><%= cart.quantity %></td>
-            </tr>
-            <% }) %>
-        </tbody>
-    </table>
+    <header style="text-align:center; margin-top: 30px; margin-bottom:30px">
+        <h1>List Peminjaman</h1>
+        <a href="/customer/do_logout" ><button class="btn btn-warning">Logout</button></a>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Book Description</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% carts.forEach(function(cart) { %>
+                    <tr>
+                        <td><%= cart.Book.title %></td>
+                        <td><%= cart.Book.description %></td>
+                        <td><%= cart.quantity %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </body>
 </html>
